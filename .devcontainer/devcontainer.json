@@ -53,7 +53,8 @@
         "--ipc=host",
         "-e", "DISPLAY=${env:DISPLAY}",
         "--gpus", "all",
-        "-e", "NVIDIA_DRIVER_CAPABILITIES=compute,utility,display"
+        "-e", "NVIDIA_DRIVER_CAPABILITIES=compute,utility,display",
+        "-e", "TORCH_CUDA_ARCH_LIST=8.6"
     ],
     "mounts": [
        "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",

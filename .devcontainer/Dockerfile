@@ -1,4 +1,4 @@
-FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-devel
+FROM pytorch/pytorch:2.9.0-cuda12.8-cudnn9-devel
 ARG USERNAME=USERNAME
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
@@ -68,6 +68,10 @@ RUN apt-get install libnss3 -y
 
 ENV LANG=C.UTF-8
 ENV LC_ALL=C.UTF-8
+
+# RTX 5070 Ti is a Blackwell GPU. Build PyTorch CUDA extensions for sm_120.
+ENV TORCH_CUDA_ARCH_LIST="12.0"
+ENV CUDAARCHS="120"
 
 RUN apt-get install wget ca-certificates gnupg lsb-release software-properties-common -y
 

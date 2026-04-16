@@ -7,13 +7,9 @@ on:
       - master
     paths:
       - ".devcontainer/Dockerfile"
-      - ".devcontainer/devcontainer.json"
-      - ".github/workflows/devcontainer-image.yml"
   pull_request:
     paths:
       - ".devcontainer/Dockerfile"
-      - ".devcontainer/devcontainer.json"
-      - ".github/workflows/devcontainer-image.yml"
   workflow_dispatch:
 
 permissions:

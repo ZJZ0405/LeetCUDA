@@ -2,12 +2,13 @@
     "name": "CUDA Development Container",
     "privileged": true,
     "remoteUser": "root",
-    "build": {
-        "dockerfile": "Dockerfile",
-        "args": {
-            "USERNAME": "mol"
-        }
-    },
+    // "build": {
+    //     "dockerfile": "Dockerfile",
+    //     "args": {
+    //         "USERNAME": "mol"
+    //     }
+    // },
+    "image": "ghcr.io/zjz0405/leetcuda-devcontainer:latest",
     "workspaceFolder": "/home/ws",
     "workspaceMount": "source=${localWorkspaceFolder},target=/home/ws,type=bind",
     "customizations": {
@@ -54,7 +55,7 @@
         "-e", "DISPLAY=${env:DISPLAY}",
         "--gpus", "all",
         "-e", "NVIDIA_DRIVER_CAPABILITIES=compute,utility,display",
-        "-e", "TORCH_CUDA_ARCH_LIST=8.6"
+        "-e", "TORCH_CUDA_ARCH_LIST=12.0"
     ],
     "mounts": [
        "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",

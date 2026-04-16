@@ -38,19 +38,17 @@
 ## 📖 News 🔥🔥
 <div id="news"></div>
 
-- [2025-08-18]: **[🤗cache-dit](https://github.com/vipshop/cache-dit)** is released! A Unified and Flexible Inference Engine with Hybrid Cache Acceleration and Parallelism for 🤗Diffusers. Feel free to take a try!
+- [2026/03] Cache-DiT **[🎉v1.3.0](https://github.com/vipshop/cache-dit)** release is ready, the major updates including: [Ring](https://cache-dit.readthedocs.io/en/latest/user_guide/CONTEXT_PARALLEL) Attention w/ [batched P2P](https://cache-dit.readthedocs.io/en/latest/user_guide/CONTEXT_PARALLEL), [USP](https://cache-dit.readthedocs.io/en/latest/user_guide/CONTEXT_PARALLEL/) (Hybrid Ring and Ulysses), Hybrid 2D and 3D Parallelism (💥[USP + TP](https://cache-dit.readthedocs.io/en/latest/user_guide/HYBRID_PARALLEL/)),  VAE-P Comm overhead reduce.
 
-<div align='center'>
-  <img src=https://github.com/vipshop/cache-dit/raw/main/assets/cache-dit-v1.png height="320px">
-</div>
+![arch](https://github.com/vipshop/cache-dit/raw/main/assets/arch_v2.png)
 
-- [2025-01-08]: **[🤖ffpa-attn](https://github.com/xlite-dev/ffpa-attn.git)** is released! Yet another Faster Flash Prefill Attention with O(1)🎉SRAM complexity for large headdim, **1.8x~3x↑**🎉 vs SDPA EA: [📈L20 ~1.9x↑🎉](https://github.com/xlite-dev/ffpa-attn?tab=readme-ov-file#L1-bench-l20), [📈A30 ~1.8x↑🎉](https://github.com/xlite-dev/ffpa-attn?tab=readme-ov-file#L1-bench-a30),[📈4090 ~2.1x↑🎉](https://github.com/xlite-dev/ffpa-attn?tab=readme-ov-file#L1-bench-4090).
+- [2025/01]: **[🤖ffpa-attn](https://github.com/xlite-dev/ffpa-attn.git)** is released! Yet another Faster Flash Prefill Attention with O(1)🎉SRAM complexity for large headdim, **1.8x~3x↑**🎉 vs SDPA EA: [📈L20 ~1.9x↑🎉](https://github.com/xlite-dev/ffpa-attn?tab=readme-ov-file#L1-bench-l20), [📈A30 ~1.8x↑🎉](https://github.com/xlite-dev/ffpa-attn?tab=readme-ov-file#L1-bench-a30),[📈4090 ~2.1x↑🎉](https://github.com/xlite-dev/ffpa-attn?tab=readme-ov-file#L1-bench-4090).
 
 <div align='center'>
 <img height="320px" alt="image" src="https://github.com/user-attachments/assets/ed30185b-2e11-4293-832f-43e9003d6ad9" />
 </div>
 
-- [2024-12-02]: **[⚡️HGEMM](https://github.com/xlite-dev/HGEMM.git)** is released! Write HGEMM from scratch using Tensor Cores with **WMMA, MMA and CuTe** API, achieve peak🎉 performance.
+- [2024/12]: **[⚡️HGEMM](https://github.com/xlite-dev/HGEMM.git)** is released! Write HGEMM from scratch using Tensor Cores with **WMMA, MMA and CuTe** API, achieve peak🎉 performance.
 
 ## 📖 Contents
 <div id="contents"></div>
@@ -385,6 +383,8 @@ The kernels listed here will guide you through a step-by-step progression, rangi
 | ✔️ [hgemm_mma_m16n8k16...swizzle{tn}{smem}*](./kernels/hgemm/mma/swizzle/hgemm_mma_stage_tn_swizzle_x4.cu)|f16|f16|[link](./kernels/hgemm/)|⭐️⭐️⭐️|
 | ✔️ [hgemm_mma_stages_swizzle{smem}...cute*](./kernels/hgemm/cutlass/hgemm_mma_stage_tn_cute.cu)|f16|f16|[link](./kernels/hgemm/)|⭐️⭐️⭐️|
 | ✔️ [hgemm_mma_cublas*](./kernels/hgemm/cublas/hgemm_cublas.cu)|f16|f16|[link](./kernels/hgemm/)|⭐️⭐️|
+| ✔️ [hgemm_wgmma_m64n128k16...tma{ws}{tn}*](./kernels/hgemm/wgmma/hgemm_wgmma_fp16acc_stages_tn.cu)|f16|f16|[link](./kernels/hgemm/)|⭐️⭐️⭐️|
+| ✔️ [hgemm_wgmma_m64n128k16_fp32...tma*](./kernels/hgemm/wgmma/hgemm_wgmma_fp32acc_stages_tn.cu)|f16|f32|[link](./kernels/hgemm/)|⭐️⭐️⭐️|
 
 ### 📚 Hard+ ⭐️⭐️⭐️⭐️ & Hard++ ⭐️⭐️⭐️⭐️⭐️ ([©️back👆🏻](#cuda-kernel))
 
@@ -476,6 +476,9 @@ The kernels listed here will guide you through a step-by-step progression, rangi
 
 |📖 类型-标题|📖 作者| 📖 推荐 |
 |:---|:---|:---|
+| [[Diffusion推理]📖简短的2025年总结，写在Cache-DiT v1.2.1之际](https://zhuanlan.zhihu.com/p/2001692370358539662)|@DefTruth|⭐️⭐️|
+| [[Diffusion推理]📖CacheDiT支持Z-Image分布式推理和缓存加速​​](https://zhuanlan.zhihu.com/p/1978490962742374735)|@DefTruth|⭐️⭐️|
+| [[Diffusion推理]📖cache-dit支持FLUX.2分布式推理和Cache](https://zhuanlan.zhihu.com/p/1977698505834379041)|@DefTruth|⭐️⭐️|
 | [[Diffusion推理]📖Cache加速-FoCa公式理解记录](https://zhuanlan.zhihu.com/p/1952056591068144338)|@DefTruth|⭐️⭐️⭐|
 | [[Diffusion推理]📖cache-dit: BlockAdapter支持HunyuanImage-2.1 Cache加速!](https://zhuanlan.zhihu.com/p/1950849526400263083)|@DefTruth|⭐️⭐️⭐|
 | [[Diffusion推理]📖cache-dit + Qwen-Image-Lightning 实现 3.5 steps 推理!](https://zhuanlan.zhihu.com/p/1948696529180295613)|@DefTruth|⭐️⭐️⭐|
@@ -570,6 +573,12 @@ The kernels listed here will guide you through a step-by-step progression, rangi
 |:---|:---|:---|
 | [[cute系列详解][入门]📖cutlass cute 101](https://zhuanlan.zhihu.com/p/660379052)|@朱小霖|⭐️⭐️⭐️|
 | [[cute系列详解][入门]📖CUTLASS 2.x & CUTLASS 3.x Intro 学习笔记](https://zhuanlan.zhihu.com/p/710516489)|@BBuf|⭐️⭐️⭐️|
+| [[cute系列详解][入门]📖写给大家看的 CuTe 教程：tiled copy](https://zhuanlan.zhihu.com/p/1930389542784964333)|@竹熙佳处|⭐️⭐️⭐️|
+| [[cute系列详解][入门]📖写给大家看的 CuTe 教程：tiled mma](https://zhuanlan.zhihu.com/p/1937145378446226159)|@竹熙佳处|⭐️⭐️⭐️|
+| [[cute系列详解][入门]📖写给大家看的 CuTe 教程：Layout Compose & Inverse](https://zhuanlan.zhihu.com/p/1962625273636845008)|@竹熙佳处|⭐️⭐️⭐️|
+| [[cute系列详解][入门]📖写给大家看的 CuTe 教程: Layout Product & Divide](https://zhuanlan.zhihu.com/p/1971945267294111573)|@竹熙佳处|⭐️⭐️⭐️|
+| [[cute系列详解][入门]📖写给大家看的 CuTe 教程：TMA Copy](https://zhuanlan.zhihu.com/p/2003198909405763007)|@竹熙佳处|⭐️⭐️⭐️|
+| [[cute系列详解][入门]📖写给进阶开发的 CuTe 笔记：permutationMNK 参数](https://zhuanlan.zhihu.com/p/1973526710105419953)|@竹熙佳处|⭐️⭐️⭐️|
 | [[cute系列详解][Layout]📖cute 之 Layout](https://zhuanlan.zhihu.com/p/661182311)|@reed|⭐️⭐️⭐️|
 | [[cute系列详解][Layout]📖cute Layout 的代数和几何解释](https://zhuanlan.zhihu.com/p/662089556)|@reed|⭐️⭐️⭐️|
 | [[cute系列详解][Tensor]📖cute 之 Tensor](https://zhuanlan.zhihu.com/p/663093816)|@reed|⭐️⭐️⭐️|
@@ -580,6 +589,7 @@ The kernels listed here will guide you through a step-by-step progression, rangi
 | [[cute系列详解][Swizzle]📖cutlass swizzle机制解析（一）](https://zhuanlan.zhihu.com/p/710337546)|@Titus|⭐️⭐️⭐️|
 | [[cute系列详解][Swizzle]📖cutlass swizzle机制解析（二）](https://zhuanlan.zhihu.com/p/711398930)|@Titus|⭐️⭐️⭐️|
 | [[cute系列详解][Swizzle]📖CUDA避免smem bank conflict的swizzle机制解析](https://zhuanlan.zhihu.com/p/4746910252)|@frankshi|⭐️⭐️⭐️|
+| [[cute系列详解][Swizzle]📖布局代数实战：Swizzle自动推导](https://zhuanlan.zhihu.com/p/1941306442683515068)|@melonedo|⭐️⭐️⭐️|
 | [[cute系列详解][GEMM]📖cute 之 简单GEMM实现](https://zhuanlan.zhihu.com/p/667521327)|@reed|⭐️⭐️⭐️|
 | [[cute系列详解][GEMM]📖cute 之 GEMM流水线](https://zhuanlan.zhihu.com/p/665082713)|@reed|⭐️⭐️⭐️|
 | [[cute系列详解][GEMM]📖cute 之 高效GEMM实现](https://zhuanlan.zhihu.com/p/675308830)|@reed|⭐️⭐️⭐️|
@@ -622,6 +632,10 @@ The kernels listed here will guide you through a step-by-step progression, rangi
 | [[CUDA优化][实践]📖CUDA（四）：使用 CUDA 实现 Transformer 结构](https://zhuanlan.zhihu.com/p/694416583)|@紫气东来|⭐️⭐️⭐️|
 | [[CUDA优化][Copy]📖Async Copy及Memory Barrier指令的功能与实现](https://zhuanlan.zhihu.com/p/685168850)|@Frank Wang|⭐️⭐️⭐️|
 | [[CUDA优化][GEMV]📖深入浅出GPU优化系列：gemv优化](https://zhuanlan.zhihu.com/p/494144694)|@有了琦琦的棍子|⭐️⭐️⭐️|
+| [[CUDA优化][实践]📖CUDA element-wise 算子详解](https://zhuanlan.zhihu.com/p/1888630735520391519)|@懒蚂蚁呀不嘿|⭐️⭐️⭐️|
+| [[CUDA优化][实践]📖CUDA transpose 算子详解](https://zhuanlan.zhihu.com/p/1899760505733756129)|@懒蚂蚁呀不嘿|⭐️⭐️⭐️|
+| [[CUDA优化][实践]📖CUDA reduce 算子详解](https://zhuanlan.zhihu.com/p/1905661893739283464)|@懒蚂蚁呀不嘿|⭐️⭐️⭐️|
+| [[CUDA优化][实践]📖CUDA GEMM 算子详解](https://zhuanlan.zhihu.com/p/1910636263666610461)|@懒蚂蚁呀不嘿|⭐️⭐️⭐️|
 | [[Tensor Cores]📖Nvidia Tensor Core初探](https://zhuanlan.zhihu.com/p/620185229)|@木子知|⭐️⭐️⭐️|
 | [[Tensor Cores]📖Nvidia Tensor Core-WMMA API编程入门](https://zhuanlan.zhihu.com/p/620766588)|@木子知|⭐️⭐️⭐️|
 | [[Tensor Cores]📖Nvidia Tensor Core-MMA PTX编程入门](https://zhuanlan.zhihu.com/p/621855199)|@木子知|⭐️⭐️⭐️|
